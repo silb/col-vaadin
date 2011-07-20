@@ -6,6 +6,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
 import com.vaadin.Application;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.Window;
 
@@ -30,6 +31,8 @@ public class TestApplication extends Application implements ContextProvider {
             public void buttonClick(ClickEvent event) {
                 window.addComponent(new Label("Found context for Number.class: " + Context.locate(button, Number.class)));
                 window.addComponent(new Label("Found context for String.class: " + Context.locate(button, String.class)));
+                window.addComponent(new Label("Found context for Component.class: " + Context.locate(button, Component.class)));
+                window.addComponent(new Label("Found context for Application.class: " + Context.locate(button, Application.class)));
             }
         });
         window.addComponent(button);

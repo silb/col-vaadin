@@ -21,7 +21,7 @@ public class Context {
 
     private static <T> T getContext(Object container, Class<T> type) {
 
-        if (container.getClass().isAssignableFrom(type)) {
+        if (type.isAssignableFrom(container.getClass())) {
             return type.cast(container);
         } else if (container instanceof ContextProvider) {
             return ((ContextProvider) container).getContext(type);
