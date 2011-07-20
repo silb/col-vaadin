@@ -1,0 +1,14 @@
+# Contextual Object Lookup (COL) for Vaadin
+
+This library provides a mechanism for decoupling Vaading components at different
+levels of the component hierarchy from each other.
+
+The typical scenario where this is needed is when a component deep down in the
+hierarchy depends on some other component close to the root of the hierarchy.
+
+The decoupling is provided by an intermediary lookup mechanism which components
+down in the hierarchy can use in order to get access to:
+
+ * Components further up in the hierarchy
+ * Services
+ * Other objects that are shared between two or more components
