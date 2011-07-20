@@ -45,6 +45,6 @@ Customer nor do they provide a customer through ContextProvider. The COL
 therefore continues up to C2 which does provide a customer. Note that this
 customer is different from the customer that is provided by R. The COL
 terminates and returns the customer from C2 to C211. By using COL for looking up
-the customer we avoid having any dependency or object reference from C211 and
-C2. This gets increasingly important as the distance between C211 and C2
+the customer we avoid having any dependency or object reference from C211 to C2.
+This gets increasingly important as the distance between C211 and C2
 increases.
