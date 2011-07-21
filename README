@@ -3,24 +3,28 @@
 This library provides a mechanism for decoupling Vaadin components at different
 levels of the component hierarchy from each other.
 
-The typical scenario where this is needed is when a component deep down in the
-hierarchy depends on some other component closer to the root of the hierarchy.
+The typical scenarios where COL is used is as follows:
+
+ 1. A component deep down in the hierarchy depends on some other component
+    closer to the root of the hierarchy.
+ 2. A component needs access to the service layer.
 
 The decoupling is provided by an intermediary lookup mechanism which components
 down in the hierarchy can use in order to get access to:
 
+ * Objects that components up in the hierarchy provide to other components
  * Components further up in the hierarchy
  * Services
- * Other objects that are shared between two or more components
+
 
 ## The Contextual Object Lookup (COL) Pattern
 
-The pattern is somewhat similar to the Service Locator pattern in that they are
-both used for locating objects (services). COL differs from SL as the lookup
-may return different results depending on the position (or context) in the
-component tree where it starts.
+The pattern is somewhat similar to the Service Locator (SL) pattern in that they
+are both used for locating objects (or services). COL differs from SL as the
+lookup may return different results depending on the position (or context) in
+the component tree where it starts.
 
-Example:
+Example component tree:
         R (Provides: CustomerService, Customer)
        / \
    C1 -   - C2 (Provides: Customer)
@@ -36,8 +40,9 @@ continues up to R, the root component (a Vaadin Application). R provides a
 Customer which is then returned to C1 as the result of the COL. C1 will
 therefore be editing the name of the customer provided by R.
 
-In order to store a customer, C1 needs access to a CustomerService. This service
-is also obtained through COL.
+In order to store a customer, C1 needs access to a CustomerService. C1 will use
+COL to obtain the service. The search for CustomerService ends up in the root
+component R which will query the service layer for CustomerService.
 
 The component C211 displays a summary of a customer. In order to obtain the
 customer it performs COL starting from itself. C211 and C21 do not implement
