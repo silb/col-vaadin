@@ -5,17 +5,18 @@ levels of the component hierarchy from each other.
 
 The typical scenarios where COL is used is as follows:
 
- 1. A component deep down in the hierarchy depends on some other component
-    closer to the root of the hierarchy.
- 2. A component needs access to the service layer.
+ 1. A component deep down in the hierarchy needs to communicate with some other
+    component closer to the root of the hierarchy.
+ 2. A component deep down in the hierarchy depends on and object that is
+    provided by some other component closer to the root of the hierarchy.
+ 3. A component needs access to the service layer.
 
-The decoupling is provided by an intermediary lookup mechanism which components
-down in the hierarchy can use in order to get access to:
+The decoupling is provided by an intermediary lookup mechanism which traverses
+the component hierarchy. As stated above, it can be used for retrieving:
 
- * Objects that components up in the hierarchy provide to other components
- * Components further up in the hierarchy
- * Services
-
+ 1. Components further up in the hierarchy
+ 2. Objects that components up in the hierarchy provide to other components
+ 3. Services
 
 ## The Contextual Object Lookup (COL) Pattern
 
