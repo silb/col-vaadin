@@ -30,10 +30,11 @@ public class ExampleApplication extends Application implements ContextProvider {
 
             @Override
             public void buttonClick(ClickEvent event) {
-                window.addComponent(new Label("Found context for Number.class: " + Context.locate(button, Number.class)));
-                window.addComponent(new Label("Found context for String.class: " + Context.locate(button, String.class)));
-                window.addComponent(new Label("Found context for Component.class: " + Context.locate(button, Component.class)));
-                window.addComponent(new Label("Found context for Application.class: " + Context.locate(button, Application.class)));
+                ContextLocator locator = Context.locator(button);
+                window.addComponent(new Label("Found context for Number.class: " + locator.locate(Number.class)));
+                window.addComponent(new Label("Found context for String.class: " + locator.locate(String.class)));
+                window.addComponent(new Label("Found context for Component.class: " + locator.locate(Component.class)));
+                window.addComponent(new Label("Found context for Application.class: " + locator.locate(Application.class)));
             }
         });
         window.addComponent(button);

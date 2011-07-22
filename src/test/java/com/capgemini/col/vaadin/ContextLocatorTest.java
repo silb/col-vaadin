@@ -44,7 +44,7 @@ public class ContextLocatorTest {
     @Test
     public void sourceObjectAsContextWhenInstanceOfType() {
         Integer sourceObject = 1;
-        Number context = Context.extract(sourceObject, Number.class);
+        Number context = ContextLocator.extract(sourceObject, Number.class);
         assertSame(sourceObject, context);
     }
 
@@ -54,9 +54,9 @@ public class ContextLocatorTest {
         c11.contextHolder.add(Integer.valueOf(41));
         application.contextHolder.add(Integer.valueOf(40));
 
-        assertEquals(Integer.valueOf(42), Context.locate(c111, Integer.class));
-        assertEquals(Integer.valueOf(41), Context.locate(c112, Integer.class));
-        assertEquals(Integer.valueOf(40), Context.locate(c1, Integer.class));
+        assertEquals(Integer.valueOf(42), Context.from(c111).locate(Integer.class));
+        assertEquals(Integer.valueOf(41), Context.from(c112).locate(Integer.class));
+        assertEquals(Integer.valueOf(40), Context.from(c1).locate(Integer.class));
     }
 
     @Test
@@ -64,21 +64,21 @@ public class ContextLocatorTest {
         application.contextHolder.add(Integer.valueOf(42));
         c1.maxTraversal(1);
         c11.maxTraversal(1);
-        Context.locate(c11, Integer.class);
+        Context.from(c11).locate(Integer.class);
     }
 
     @Test
     public void contextProviderTakesPrecedenceOverComponentImplemenation() {
         Serializable providedContext = "Serializable object through ContextProvider";
         c121.contextHolder.add(Serializable.class, providedContext);
-        Object found = Context.locate(c121, Serializable.class);
+        Object found = Context.from(c121).locate(Serializable.class);
         assertTrue(c121 instanceof Serializable);
         assertEquals(providedContext, found);
     }
 
     @Test
     public void emptyContextProviderRevertsToDirectImplementation() {
-        Object found = Context.locate(c121, Serializable.class);
+        Object found = Context.from(c121).locate(Serializable.class);
         assertEquals(c121, found);
     }
 
@@ -90,6 +90,6 @@ public class ContextLocatorTest {
         c1.contextHolder.add(context2);
         application.contextHolder.add(context1);
 
-        assertSame(context1, Context.locate(c111, TestRootContext.class));
+        assertSame(context1, Context.from(c111).locate(TestRootContext.class));
     }
 }
