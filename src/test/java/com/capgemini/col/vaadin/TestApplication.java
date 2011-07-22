@@ -1,56 +1,31 @@
 package com.capgemini.col.vaadin;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.webapp.WebAppContext;
-
 import com.vaadin.Application;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.Window;
 
 public class TestApplication extends Application implements ContextProvider {
+
     private static final long serialVersionUID = 1L;
 
-    private Window window;
+    public ContextHolder contextHolder = new ContextHolder();
 
-    private ContextHolder ch = new ContextHolder();
+    Window window = new Window();
+
+    public TestApplication(Component root) {
+        super();
+        window.addComponent(root);
+        setMainWindow(window);
+    }
 
     @Override
     public void init() {
-        window = new Window("My Vaadin Application");
-        setMainWindow(window);
-
-        ch.put(String.class, "Ehlo");
-
-        final Button button = new Button("Click Me");
-        button.addListener(new Button.ClickListener() {
-            private static final long serialVersionUID = 1L;
-
-            public void buttonClick(ClickEvent event) {
-                window.addComponent(new Label("Found context for Number.class: " + Context.locate(button, Number.class)));
-                window.addComponent(new Label("Found context for String.class: " + Context.locate(button, String.class)));
-                window.addComponent(new Label("Found context for Component.class: " + Context.locate(button, Component.class)));
-                window.addComponent(new Label("Found context for Application.class: " + Context.locate(button, Application.class)));
-            }
-        });
-        window.addComponent(button);
 
     }
 
+    @Override
     public <T> T getContext(Class<T> type) {
-        if (Number.class.isAssignableFrom(type)) {
-            return type.cast(Integer.valueOf(1));
-        }
-        return ch.get(type);
+        return contextHolder.getContext(type);
     }
 
-    public static void main(String[] args) throws Exception {
-            Server server = new Server(8080);
-            WebAppContext context = new WebAppContext(server, "src/main/webapp", "/");
-            context.setParentLoaderPriority(true);
-            server.setStopAtShutdown(true);
-            server.start();
-    }
 }
