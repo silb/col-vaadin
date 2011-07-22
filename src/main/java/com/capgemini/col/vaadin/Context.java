@@ -3,6 +3,9 @@ package com.capgemini.col.vaadin;
 import com.vaadin.Application;
 import com.vaadin.ui.Component;
 
+/**
+ * Serves as the entry point for the API through static methods.
+ */
 public class Context {
 
     private static ContextConfig config;

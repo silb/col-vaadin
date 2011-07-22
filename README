@@ -9,7 +9,7 @@ The typical scenarios where COL is used is as follows:
 
  1. A component deep down in the hierarchy needs to communicate with some other
     component closer to the root of the hierarchy.
- 2. A component deep down in the hierarchy depends on and object that is
+ 2. A component deep down in the hierarchy needs to operate on an object that is
     provided by some other component closer to the root of the hierarchy.
  3. A component needs access to the service layer.
 
@@ -24,8 +24,8 @@ the component hierarchy. As stated above, it can be used for retrieving:
 
 The pattern is somewhat similar to the Service Locator (SL) pattern in that they
 are both used for locating objects (or services). COL differs from SL as the
-lookup may return different results depending on the position (or context) in
-the component tree where it starts.
+lookup may return different results depending on the position in the component
+tree where it starts.
 
 Example component tree:
         R (Provides: CustomerService, Customer)
