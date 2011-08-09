@@ -28,7 +28,7 @@ public ParentComponent extends AbstractComponent implements ContextProvider {
     private ContextHolder ch = new ContextHolder();
 
     public ParentComponent() {
-        ch.add(new CustomerContext());
+        ch.add(new Customer());
     }
 
     public <T> T getContext(Class<T> type) {
