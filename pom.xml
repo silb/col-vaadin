@@ -5,7 +5,6 @@
   <groupId>com.capgemini</groupId>
   <artifactId>col-vaadin</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
   <name>COL - Vaadin</name>
   <description>
     Inter-component communication and service layer integration for Vaadin
@@ -235,4 +234,5 @@
     </dependency>
   </dependencies>
 
+  <version>0.1-SNAPSHOT</version>
 </project>
