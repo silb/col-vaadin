@@ -20,7 +20,51 @@ the component hierarchy. As stated above, it can be used for retrieving:
  2. Objects that components up in the hierarchy provide to other components
  3. Services
 
-## The Contextual Object Lookup (COL) Pattern
+# Example usage
+
+## Providing objects to child components
+
+public ParentComponent extends AbstractComponent implements ContextProvider {
+    private ContextHolder ch = new ContextHolder();
+
+    public ParentComponent() {
+        ch.add(new CustomerContext());
+    }
+
+    public <T> T getContext(Class<T> type) {
+        return ch.getContext(type);
+    }
+}
+
+public ChildButton extends Button implements Button.ClickListener {
+    public ChildButton() {
+        super(this);
+    }
+
+    public void buttonClick(ClickEvent event) {
+        Customer customer = Context.from(this).locate(Customer.class);
+        customer.doSomething();
+    }
+}
+
+## Providing Spring services as contexts
+
+public MyApplication extends Application implements ContextProvider {
+  public <T> T getContext(Class<T> type) {
+      ServletContext sc = ((WebApplicationContext) getContext()).getHttpSession().getServletContext();
+      return WebApplicationContextUtils.getRequiredWebApplicationContext(sc).getBean(type);
+  }
+}
+
+public MyComponent extends AbstractComponent {
+  public void attach() {
+    // Note: The context cannot be retrieved in the constructor as the component
+    // has yet to be attached to the component tree.
+    MySpringService mySpringService = Context.from(this).locate(MySpringService.class);
+  }
+}
+
+# The Contextual Object Lookup (COL) Pattern
 
 The pattern is somewhat similar to the Service Locator (SL) pattern in that they
 are both used for locating objects (or services). COL differs from SL as the
