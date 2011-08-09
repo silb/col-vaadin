@@ -1,9 +1,14 @@
-package com.capgemini.col.vaadin;
+package com.capgemini.col.vaadin.example;
 
 import org.mortbay.jetty.Server;
-import org.mortbay.jetty.webapp.WebAppContext;
+import org.mortbay.jetty.servlet.ServletHolder;
 
+import com.capgemini.col.vaadin.Context;
+import com.capgemini.col.vaadin.ContextHolder;
+import com.capgemini.col.vaadin.ContextLocator;
+import com.capgemini.col.vaadin.ContextProvider;
 import com.vaadin.Application;
+import com.vaadin.terminal.gwt.server.ApplicationServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
@@ -49,10 +54,18 @@ public class ExampleApplication extends Application implements ContextProvider {
         return ch.getContext(type);
     }
 
+    /**
+     * Start Jetty with this application at http://localhost:8080
+     */
     public static void main(String[] args) throws Exception {
             Server server = new Server(8080);
-            WebAppContext context = new WebAppContext(server, "src/main/webapp", "/");
-            context.setParentLoaderPriority(true);
+
+            org.mortbay.jetty.servlet.Context root = new org.mortbay.jetty.servlet.Context(server, "/",
+                    org.mortbay.jetty.servlet.Context.SESSIONS);
+            ServletHolder sh = new ServletHolder(ApplicationServlet.class);
+            sh.setInitParameter("application", ExampleApplication.class.getName());
+            root.addServlet(sh, "/*");
+
             server.setStopAtShutdown(true);
             server.start();
     }
