@@ -14,8 +14,8 @@ public class ContextReference<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Component container;
-    private Class<T> type;
+    private final Component container;
+    private final Class<T> type;
     private transient T context;
 
     public ContextReference(Component container, Class<T> type) {

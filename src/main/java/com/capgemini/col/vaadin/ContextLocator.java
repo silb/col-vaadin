@@ -9,7 +9,7 @@ public class ContextLocator implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Component component;
+    private final Component component;
 
     public ContextLocator(Component component) {
         this.component = component;

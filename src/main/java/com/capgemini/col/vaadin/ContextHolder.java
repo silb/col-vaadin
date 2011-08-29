@@ -12,7 +12,7 @@ public class ContextHolder implements ContextProvider, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Map<String, Serializable> store = new HashMap<String, Serializable>();
+    private final Map<String, Serializable> store = new HashMap<String, Serializable>();
 
     @Override
     public <T> T getContext(Class<T> type) {

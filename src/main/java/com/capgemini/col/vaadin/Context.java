@@ -8,7 +8,7 @@ import com.vaadin.ui.Component;
  */
 public class Context {
 
-    static ContextConfig config;
+    static final ContextConfig config;
 
     static {
         String configClassName = System.getProperty(ContextConfig.class.getName());
