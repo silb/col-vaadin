@@ -8,13 +8,12 @@ import java.util.Map;
  * For holding serializable contexts. Components can contain an instance of this class and
  * provide a a delegate method to {@link #getContext(Class)} in order to implement {@link ContextProvider}.
  */
-public class ContextHolder implements ContextProvider, Serializable {
+public class ContextHolder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     private final Map<String, Serializable> store = new HashMap<String, Serializable>();
 
-    @Override
     public <T> T getContext(Class<T> type) {
         Object context = store.get(type.getName());
         if (context != null && type.isAssignableFrom(context.getClass())) {
