@@ -36,6 +36,10 @@ public class Context {
 
     }
 
+    private Context() {
+
+    }
+
     /**
      * Find a context from the given component.
      */
