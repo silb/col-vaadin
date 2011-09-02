@@ -1,5 +1,13 @@
 package org.vaadin.col;
 
+/**
+ * A JVM wide configuration class. To use a custom implementation set the system
+ * property <tt>org.vaadin.col.ContextConfig</tt> to the class name of the
+ * implementation.
+ * <p>
+ * Example:
+ * <pre>-Dorg.vaadin.col.ContextConfig=org.example.MyContextConfig</pre>
+ */
 public interface ContextConfig {
 
     /**

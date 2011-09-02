@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * For holding serializable contexts. Components can contain an instance of this class and
- * provide a a delegate method to {@link #getContext(Class)} in order to implement {@link ContextProvider}.
+ * provide a delegate method to {@link #getContext(Class)} in order to implement {@link ContextProvider}.
  */
 public class ContextHolder implements Serializable {
 

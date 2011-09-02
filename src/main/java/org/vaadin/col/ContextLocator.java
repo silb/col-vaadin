@@ -5,6 +5,9 @@ import java.io.Serializable;
 import com.vaadin.Application;
 import com.vaadin.ui.Component;
 
+/**
+ * For obtaining multiple contexts from the same component.
+ */
 public class ContextLocator implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,7 +34,6 @@ public class ContextLocator implements Serializable {
      * T themselves.
      *
      * @param <T> the type of the context
-     * @param component the component where the lookup starts
      * @param type the class of the context type
      * @return the context or null if no context was found
      */
