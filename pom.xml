@@ -16,6 +16,9 @@
     <developerConnection>git@github.com:silb/col-vaadin.git</developerConnection>
     <url>https://github.com/silb/col-vaadin</url>
   </scm>
+  <issueManagement>
+    <url>https://github.com/silb/col-vaadin/issues</url>
+  </issueManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
