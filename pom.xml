@@ -135,7 +135,7 @@
                   <attribute name="Implementation-Title" value="${project.name}"/>
                   <attribute name="Implementation-Version" value="${project.version}"/>
                   <attribute name="Vaadin-Package-Version" value="1"/>
-                  <attribute name="Vaadin-Addon" value="${project.build.finalName}.${project.packaging}"/>
+                  <attribute name="Vaadin-Addon" value="${project.build.finalName}/${project.build.finalName}.${project.packaging}"/>
                 </manifest>
               </tasks>
             </configuration>
