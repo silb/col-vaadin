@@ -1,4 +1,4 @@
-package com.capgemini.col.vaadin;
+package org.vaadin.col;
 
 /**
  * An interface for objects that are able to provide contexts.

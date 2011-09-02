@@ -1,12 +1,12 @@
-package com.capgemini.col.vaadin.example;
+package org.vaadin.col.example;
 
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.servlet.ServletHolder;
+import org.vaadin.col.Context;
+import org.vaadin.col.ContextHolder;
+import org.vaadin.col.ContextLocator;
+import org.vaadin.col.ContextProvider;
 
-import com.capgemini.col.vaadin.Context;
-import com.capgemini.col.vaadin.ContextHolder;
-import com.capgemini.col.vaadin.ContextLocator;
-import com.capgemini.col.vaadin.ContextProvider;
 import com.vaadin.Application;
 import com.vaadin.terminal.gwt.server.ApplicationServlet;
 import com.vaadin.ui.Button;

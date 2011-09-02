@@ -1,4 +1,4 @@
-package com.capgemini.col.vaadin;
+package org.vaadin.col;
 
 import java.io.Serializable;
 import java.util.HashMap;

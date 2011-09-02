@@ -1,4 +1,4 @@
-package com.capgemini.col.vaadin;
+package org.vaadin.col;
 
 import com.vaadin.Application;
 import com.vaadin.ui.Component;

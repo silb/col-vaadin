@@ -1,4 +1,4 @@
-package com.capgemini.col.vaadin;
+package org.vaadin.col;
 
 public class TestContextConfig implements ContextConfig {
 

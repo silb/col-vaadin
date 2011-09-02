@@ -1,4 +1,4 @@
-package com.capgemini.col.vaadin;
+package org.vaadin.col;
 
 import static org.junit.Assert.assertSame;
 
