@@ -26,6 +26,7 @@
   </properties>
 
   <build>
+    <finalName>col-vaadin-${project.version}</finalName>
     <plugins>
 
       <plugin>
