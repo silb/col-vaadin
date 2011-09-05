@@ -23,7 +23,28 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <vaadin.version>6.6.5</vaadin.version>
   </properties>
+
+  <profiles>
+
+    <profile>
+      <id>vaadin-old</id>
+      <!-- The oldest version of Vaadin that is supported. -->
+      <properties>
+        <vaadin.version>6.2.1</vaadin.version>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>vaadin-next</id>
+      <!-- For testing compatibility with the upcoming Vaadin release. -->
+      <properties>
+        <vaadin.version>6.7.0.beta1</vaadin.version>
+      </properties>
+    </profile>
+
+  </profiles>
 
   <build>
     <finalName>col-vaadin-${project.version}</finalName>
@@ -154,7 +175,7 @@
     <dependency>
       <groupId>com.vaadin</groupId>
       <artifactId>vaadin</artifactId>
-      <version>6.6.2</version>
+      <version>${vaadin.version}</version>
     </dependency>
 
     <dependency>
