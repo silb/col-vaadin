@@ -47,7 +47,7 @@ public ChildButton extends Button implements Button.ClickListener {
     }
 }
 
-## Providing Spring services as contexts
+## Providing Spring services to components
 
 public MyApplication extends Application implements ContextProvider {
   public <T> T getContext(Class<T> type) {
@@ -62,6 +62,25 @@ public MyComponent extends AbstractComponent {
     // has yet to be attached to the component tree.
     MySpringService mySpringService = Context.from(this).locate(MySpringService.class);
   }
+}
+
+## Type safe access to the Application object
+
+public class MyComponent extends AbstractComponent {
+
+    public void attach() {
+        MyApplication application = Context.from(this).locate(MyApplication.class);
+    }
+
+}
+
+## Type safe access to an ancestor component
+
+public class MyChildComponent extends AbstractComponent {
+
+    public void attach() {
+        MyAncestorComponent mac = Context.from(this).locate(MyAncestorComponent.class);
+    }
 }
 
 # The Contextual Object Lookup (COL) Pattern
