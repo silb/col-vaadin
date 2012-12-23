@@ -169,7 +169,7 @@
         <version>2.2.1</version>
         <configuration>
           <descriptors>
-            <descriptor>archive-descriptor.xml</descriptor>
+            <descriptor>src/main/assembly/archive-descriptor.xml</descriptor>
           </descriptors>
         </configuration>
         <executions>
