@@ -41,6 +41,13 @@ public class ContextLocator implements Serializable {
         return locate(component, type);
     }
 
+    /**
+     * Obtain a serializable reference to a possibly non-serializable context.
+     */
+    public <T> ContextReference<T> ref(Class<T> type) {
+        return new ContextReference<T>(component, type);
+    }
+
     static <T> T locate(Component component, Class<T> type) {
 
         if (Context.config.fetchFromRoot(type)) {
