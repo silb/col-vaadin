@@ -7,43 +7,42 @@ import org.vaadin.col.ContextHolder;
 import org.vaadin.col.ContextLocator;
 import org.vaadin.col.ContextProvider;
 
-import com.vaadin.Application;
-import com.vaadin.terminal.gwt.server.ApplicationServlet;
+import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Window;
+import com.vaadin.ui.UI;
+import com.vaadin.ui.VerticalLayout;
 
-public class ExampleApplication extends Application implements ContextProvider {
+public class ExampleUI extends UI implements ContextProvider {
     private static final long serialVersionUID = 1L;
-
-    private Window window;
 
     private ContextHolder ch = new ContextHolder();
 
+    private VerticalLayout view;
+
     @Override
-    public void init() {
-        window = new Window("My Vaadin Application");
-        setMainWindow(window);
+    public void init(VaadinRequest request) {
+        view = new VerticalLayout();
 
         ch.add("Ehlo");
 
         final Button button = new Button("Click Me");
-        button.addListener(new Button.ClickListener() {
+        button.addClickListener(new Button.ClickListener() {
             private static final long serialVersionUID = 1L;
 
             @Override
             public void buttonClick(ClickEvent event) {
                 ContextLocator locator = Context.locator(button);
-                window.addComponent(new Label("Found context for Number.class: " + locator.locate(Number.class)));
-                window.addComponent(new Label("Found context for String.class: " + locator.locate(String.class)));
-                window.addComponent(new Label("Found context for Component.class: " + locator.locate(Component.class)));
-                window.addComponent(new Label("Found context for Application.class: " + locator.locate(Application.class)));
+                view.addComponent(new Label("Found context for Number.class: " + locator.locate(Number.class)));
+                view.addComponent(new Label("Found context for String.class: " + locator.locate(String.class)));
+                view.addComponent(new Label("Found context for Component.class: " + locator.locate(Component.class)));
+                view.addComponent(new Label("Found context for UI.class: " + locator.locate(UI.class)));
             }
         });
-        window.addComponent(button);
-
+        view.addComponent(button);
+        setContent(view);
     }
 
     @Override
@@ -62,8 +61,8 @@ public class ExampleApplication extends Application implements ContextProvider {
 
             org.mortbay.jetty.servlet.Context root = new org.mortbay.jetty.servlet.Context(server, "/",
                     org.mortbay.jetty.servlet.Context.SESSIONS);
-            ServletHolder sh = new ServletHolder(ApplicationServlet.class);
-            sh.setInitParameter("application", ExampleApplication.class.getName());
+            ServletHolder sh = new ServletHolder(com.vaadin.server.VaadinServlet.class);
+            sh.setInitParameter("UI", ExampleUI.class.getName());
             root.addServlet(sh, "/*");
 
             server.setStopAtShutdown(true);

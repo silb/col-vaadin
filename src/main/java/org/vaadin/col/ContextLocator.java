@@ -2,7 +2,6 @@ package org.vaadin.col;
 
 import java.io.Serializable;
 
-import com.vaadin.Application;
 import com.vaadin.ui.Component;
 
 /**
@@ -73,11 +72,11 @@ public class ContextLocator implements Serializable {
     }
 
     static <T> T extractFromRoot(Component container, Class<T> type) {
-        if (container.getApplication() == null) {
+        if (container.getUI() == null) {
             throw new IllegalStateException("Cannot locate context of type " + type.getName() + ": The component is not connected to an application.");
         }
 
-        return extract(container.getApplication(), type);
+        return extract(container.getUI(), type);
     }
 
     static <T> T extractFromHierarchy(Component component, Class<T> type) {

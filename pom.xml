@@ -33,56 +33,24 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <vaadin.version>6.8.7</vaadin.version>
+        <vaadin.version>7.0.2</vaadin.version>
       </properties>
-      <dependencies>
-        <dependency>
-          <groupId>com.vaadin</groupId>
-          <artifactId>vaadin</artifactId>
-          <version>${vaadin.version}</version>
-        </dependency>
-      </dependencies>
     </profile>
 
     <profile>
       <id>vaadin-old</id>
       <!-- The oldest version of Vaadin that is supported. -->
       <properties>
-        <vaadin.version>6.2.1</vaadin.version>
+        <vaadin.version>7.0.0</vaadin.version>
       </properties>
-      <dependencies>
-        <dependency>
-          <groupId>com.vaadin</groupId>
-          <artifactId>vaadin</artifactId>
-          <version>${vaadin.version}</version>
-        </dependency>
-      </dependencies>
     </profile>
 
     <profile>
       <id>vaadin-next</id>
       <!-- For testing compatibility with the upcoming Vaadin release. -->
       <properties>
-        <vaadin.version>7.0.0.beta10</vaadin.version>
+        <vaadin.version>7.0.x</vaadin.version>
       </properties>
-      <dependencies>
-        <dependency>
-          <groupId>com.vaadin</groupId>
-          <artifactId>vaadin-server</artifactId>
-          <version>${vaadin.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>com.vaadin</groupId>
-          <artifactId>vaadin-client-compiled</artifactId>
-          <version>${vaadin.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>com.vaadin</groupId>
-          <artifactId>vaadin-client</artifactId>
-          <version>${vaadin.version}</version>
-          <scope>provided</scope>
-        </dependency>
-      </dependencies>
     </profile>
 
   </profiles>
@@ -212,6 +180,31 @@
   </build>
 
   <dependencies>
+
+    <!-- Vaadin -->
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-server</artifactId>
+      <version>${vaadin.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-client-compiled</artifactId>
+      <version>${vaadin.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-client</artifactId>
+      <version>${vaadin.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.vaadin</groupId>
+      <artifactId>vaadin-themes</artifactId>
+      <version>${vaadin.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.mortbay.jetty</groupId>
       <artifactId>jetty</artifactId>

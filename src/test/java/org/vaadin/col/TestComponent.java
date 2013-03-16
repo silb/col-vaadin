@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
+import com.vaadin.ui.HasComponents;
 
 public class TestComponent extends AbstractComponentContainer implements ContextProvider {
 
@@ -19,7 +20,7 @@ public class TestComponent extends AbstractComponentContainer implements Context
     private int traversalCount;
 
     @Override
-    public Component getParent() {
+    public HasComponents getParent() {
         if (maxTraversal > 0) {
             traversalCount += 1;
 
@@ -47,8 +48,13 @@ public class TestComponent extends AbstractComponentContainer implements Context
     }
 
     @Override
-    public Iterator<Component> getComponentIterator() {
+    public Iterator<Component> iterator() {
         return children.iterator();
+    }
+
+    @Override
+    public int getComponentCount() {
+        return children.size();
     }
 
     @Override
