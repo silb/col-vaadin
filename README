@@ -49,7 +49,7 @@ public ChildButton extends Button implements Button.ClickListener {
 
 ## Providing Spring services to components
 
-public MyApplication extends Application implements ContextProvider {
+public MyUI extends UI implements ContextProvider {
   public <T> T getContext(Class<T> type) {
       ServletContext sc = ((WebApplicationContext) getContext()).getHttpSession().getServletContext();
       return WebApplicationContextUtils.getRequiredWebApplicationContext(sc).getBean(type);
@@ -69,7 +69,7 @@ public MyComponent extends AbstractComponent {
 public class MyComponent extends AbstractComponent {
 
     public void attach() {
-        MyApplication application = Context.from(this).locate(MyApplication.class);
+        MyUI ui = Context.from(this).locate(MyUI.class);
     }
 
 }
@@ -102,7 +102,7 @@ Example component tree:
 The component C1 is used for editing the name of a customer. The customer whose
 name is to be edited is obtained through COL starting from C1 itself. As C1 does
 not implement Customer nor provide Customer through ContextProvider, the COL
-continues up to R, the root component (a Vaadin Application). R provides a
+continues up to R, the root component (a Vaadin UI). R provides a
 Customer which is then returned to C1 as the result of the COL. C1 will
 therefore be editing the name of the customer provided by R.
 
