@@ -24,6 +24,7 @@ the component hierarchy. As stated above, it can be used for retrieving:
 
 ## Providing objects to child components
 
+```java
 public ParentComponent extends AbstractComponent implements ContextProvider {
     private ContextHolder ch = new ContextHolder();
 
@@ -46,9 +47,11 @@ public ChildButton extends Button implements Button.ClickListener {
         customer.doSomething();
     }
 }
+```
 
 ## Providing Spring services as contexts
 
+```java
 public MyApplication extends Application implements ContextProvider {
   public <T> T getContext(Class<T> type) {
       ServletContext sc = ((WebApplicationContext) getContext()).getHttpSession().getServletContext();
@@ -63,6 +66,7 @@ public MyComponent extends AbstractComponent {
     MySpringService mySpringService = Context.from(this).locate(MySpringService.class);
   }
 }
+```
 
 # The Contextual Object Lookup (COL) Pattern
 
@@ -72,6 +76,7 @@ lookup may return different results depending on the position in the component
 tree where it starts.
 
 Example component tree:
+```
         R (Provides: CustomerService, Customer)
        / \
    C1 -   - C2 (Provides: Customer)
@@ -79,6 +84,7 @@ Example component tree:
            - C21
             \
              - C211
+```
 
 The component C1 is used for editing the name of a customer. The customer whose
 name is to be edited is obtained through COL starting from C1 itself. As C1 does
