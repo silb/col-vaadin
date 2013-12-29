@@ -1,6 +1,6 @@
 # Contextual Object Lookup (COL) for Vaadin
 
-*Inter-component communication and service layer integration for the [Vaadin web framwork](http://vaadin.com)*
+*Inter-component communication and service layer integration for the [Vaadin web framework](http://vaadin.com)*
 
 This library provides a mechanism for decoupling Vaadin components at different
 levels of the component hierarchy from each other.
