@@ -33,7 +33,7 @@
         <activeByDefault>true</activeByDefault>
       </activation>
       <properties>
-        <vaadin.version>7.0.2</vaadin.version>
+        <vaadin.version>7.2.3</vaadin.version>
       </properties>
     </profile>
 
@@ -41,7 +41,7 @@
       <id>vaadin-old</id>
       <!-- The oldest version of Vaadin that is supported. -->
       <properties>
-        <vaadin.version>7.0.0</vaadin.version>
+        <vaadin.version>7.0.2</vaadin.version>
       </properties>
     </profile>
 
@@ -49,7 +49,7 @@
       <id>vaadin-next</id>
       <!-- For testing compatibility with the upcoming Vaadin release. -->
       <properties>
-        <vaadin.version>7.0.x</vaadin.version>
+        <vaadin.version>7.3.0.alpha1</vaadin.version>
       </properties>
     </profile>
 
